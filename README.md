@@ -9,14 +9,14 @@ The purpose of this evidence is to model basic Portuguese sentences that are use
 ## Model of the Solution
 The grammar that recognizes the language is the following:
 
-S → NP VP
-NP → P
-VP → V AP
-AP → A N
-P → eu | tu | ele | ela | nós | vocês | eles
-V → come | bebe | ama | vê
-A → o | a | os | as
-N → pão | água | futebol | filme
+S → NP VP  
+NP → P  
+VP → V AP  
+AP → A N  
+P → eu | tu | ele | ela | nós | vocês | eles  
+V → come | bebe | ama | vê  
+A → o | a | os | as  
+N → pão | água | futebol | filme  
 
 Where:
 - S: represents the entire sentence.
