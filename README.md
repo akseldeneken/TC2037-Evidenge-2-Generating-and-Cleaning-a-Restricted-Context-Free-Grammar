@@ -41,6 +41,12 @@ The grammar was analyzed to check for ambiguity and left recursion:
 
 Therefore, the grammar is suitable for LL(1) parsing.
 
+## Implementation
+The grammar was implemented using the natural language tooljit (ntlk) library. If you don't have it installed, you can install it using the following command:
+```
+pip install ntlk
+```
+
 ## Resources 
 
 Bird, Steven, Edward Loper and Ewan Klein (2009), Natural Language Processing with Python. O’Reilly Media Inc.
