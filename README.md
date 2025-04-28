@@ -6,6 +6,7 @@ Pronoun + Verb + Article + Noun
 
 The sentences follow strictly that order, without punctuation marks, conjuctions, or any other additional elements.
 The purpose of this evidence is to model basic Portuguese sentences that are used everyday and that are simple enough to parse and analyze with a context free grammar.
+
 ## Model of the Solution
 The grammar that recognizes the language is the following:
 
@@ -25,24 +26,22 @@ Where:
 - AP (ArticlePhrase): represents the object and consists of an Article and a Noun.
 
 
-This structure is to keep the model context free and suitable for LL(1) parsing after eliminating ambiguity and left recursion.
+This structure is to keep the model context-free and suitable for LL(1) parsing after eliminating ambiguity and left recursion.
 
-The syntatic tree of the sentence "eu come o pào" is the following:
+The syntactic tree of the sentence "eu come o pào" is the following:
 (S (NP (P eu)) (VP (V come) (AP (A o) (N pão))))
 ![Diagrama en blanco (1)](https://github.com/user-attachments/assets/2dc9787a-f2de-4bd8-90be-01cd11efada4)
 
 ## Ambiguity and Left Recursion Analysis
 
-The grammar was analyzed to check for ambiguity and left recursion:
+This grammar is not ambiguous since each sentence can only be derived in **one** unique way, and each word generates a **single** valid parse tree. There is no possibility of multiple parse trees for the same sentence.
 
-- **Ambiguity:** The grammar is not ambiguous. Each sentence can only be derived in one unique way, generating a single valid parse tree. There is no possibility of multiple parse trees for the same sentence.
-
-- **Left Recursion:** The grammar does not contain left recursion. All productions start with terminal symbols or non-terminals that eventually lead directly to terminal symbols without recursion on the left-hand side.
+Regarding left recursion, the grammar does not contain it. All productions start with terminal symbols or non-terminals that eventually lead directly to terminal symbols without recursion.
 
 Therefore, the grammar is suitable for LL(1) parsing.
 
 ## Implementation
-The grammar was implemented using the natural language tooljit (ntlk) library. If you don't have it installed, you can install it using the following command:
+The grammar was implemented using the natural language toolkit (nltk) library. If you don't have it installed, you can install it using the following command:
 ```
 pip install ntlk
 ```
@@ -101,23 +100,14 @@ This grammar **only** validates the syntactic structure of sentences according t
 ## Analysis
 
 ### Chomsky Hierarchy Classification
+According to Chomsky's hierarchy, the grammar is **Context-Free (Type 2)**.  
+In a context-free grammar, a single non-terminal can be replaced by a group of terminals and/or non-terminals. The left part of the rule always has only one non-terminal, and the right part shows what that non-terminal can become.
 
-- **Before modifications (original grammar):**  
-The grammar is **Context-Free (Type 2)** according to Chomsky's hierarchy.  
-It can be described using production rules where the left-hand side consists of a single non-terminal symbol, and the right-hand side can be a sequence of terminals and/or non-terminals.
-
-- **After modifications (eliminating ambiguity and left recursion):**  
-There were **no ambiguities** or **left recursion** detected in the original grammar.  
-Therefore, the grammar remains classified as **Context-Free (Type 2)** after analysis.
-
-**Reference:**  
-In a Context-Free Grammar (CFG), each production rule must have a single non-terminal on the left-hand side, and the right-hand side can be any combination of terminals and non-terminals. This fits exactly the structure of our grammar. 【Source: [Wikipedia - Context-Free Grammar](https://en.wikipedia.org/wiki/Context-free_grammar)】
-
----
+Because there were **no ambiguities** or **left recursion** detected in the original grammar, the grammar remains classified as **Context-Free (Type 2)** after the analysis.
 
 ### Time Complexity Implications
 
-Parsing context-free grammars (CFGs) using algorithms like **Chart Parsing** (as implemented with NLTK) has a **time complexity** of approximately **O(n³)** in the worst case, where **n** is the number of words (tokens) in the input sentence.
+Parsing context-free grammars using Chart Parsing has a time complexity of **O(n³)** in the worst case, where n is the number of words in the sentence.
 
 
 ## Resources 
