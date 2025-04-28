@@ -2,7 +2,7 @@
 ## Description
 The language I chose to model consists of simple sentences in Portuguese that follow the next structure:
 
-Pronoun + Verb + Article + Noun 
+Pronoun + Verb + Article/Determiners + Noun 
 
 The sentences follow strictly that order, without punctuation marks, conjuctions, or any other additional elements.
 The purpose of this evidence is to model basic Portuguese sentences that are used everyday and that are simple enough to parse and analyze with a context free grammar.
@@ -39,6 +39,25 @@ This grammar is not ambiguous since each sentence can only be derived in **one**
 Regarding left recursion, the grammar does not contain it. All productions start with terminal symbols or non-terminals that eventually lead directly to terminal symbols without recursion.
 
 Therefore, the grammar is suitable for LL(1) parsing.
+
+However, it is important to consider how ambiguity could arise if additional production rules were added.
+
+For example, if we modified the grammar so that a Pronoun could also be interpreted as a Noun, introducing a new production like:
+```
+N → pão | água | futebol | filme | eu | tu
+```
+In this case, the word "eu" ("I" in Portuguese) could be parsed both as a Pronoun (P) and as a Noun (N), leading to two possible parse trees for a sentence like "eu come o pão"
+**Parse 1**
+```
+(S (NP (P eu)) (VP (V come) (AP (A o) (N pão))))
+```
+**Parse 2**
+```
+(S (NP (N eu)) (VP (V come) (AP (A o) (N pão))))
+```
+This ambiguity would make the grammar unsuitable for LL(1) parsing, because the parser would not know whether "eu" should be interpreted as a Pronoun or as a Noun.
+
+Fortunately, in the original design of the grammar, such overlapping definitions are avoided, ensuring that every token belongs unambiguously to one syntactic category.
 
 
 ## Implementation
