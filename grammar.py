@@ -32,15 +32,13 @@ def test_sentence(sentence):
     parser = nltk.ChartParser(portuguese)
 
     # Print the syntax tree of each accepted sentence
-    for tree in parser.parse(sent):
-        print(tree)
-
-    # Check if its a valid sentence
-        trees = list(parser.parse(sent))
-        if len(trees) > 0:
-            return True
-        else:
-            return False
+    trees = list(parser.parse(sent))
+    if trees:
+        for tree in trees:
+            print(tree)
+        return True
+    else:
+        return False
 
 
 def main():
