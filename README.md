@@ -78,7 +78,7 @@ def test_sentence(sentence):
         else:
             return False
 ```
-In case the sentence is accepted, the corresponding syntactic tree is printed next to it to visualize the structure according to the defined grammar.
+In case the sentence is accepted, the corresponding syntactic tree is printed next to it to visualize the structure according to the defined grammar.  
 Output of an accepted sentence:
 ```
 (S (NP (P eles)) (VP (V come) (AP (A o) (N filme))))
@@ -88,14 +88,44 @@ Output of a Rejected sentence:
 ```
 eu filme vê as: Rejected
 ```
+When you run the program it will automatically test all the predefined sentences, print the corresponding syntactic tree and print whether the sentence was Accepted or Rejected.
+
+## Tests
+To validate the grammar I implemented a set of tests that you can find on the .py file in this repository. This set of tests includes both correctly structured sentences that return "Accepted" and incorrectly structures entences that return "Rejected".  
+Example:  
+"ela bebe a água" was accepted since it has a correct structure.  
+"água bebe a tu" was rejected since it has an incorrect structure.  
+
+This grammar **only** validates the syntactic structure of sentences according to the context-free rules.
+
+## Analysis
+
+### Chomsky Hierarchy Classification
+
+- **Before modifications (original grammar):**  
+The grammar is **Context-Free (Type 2)** according to Chomsky's hierarchy.  
+It can be described using production rules where the left-hand side consists of a single non-terminal symbol, and the right-hand side can be a sequence of terminals and/or non-terminals.
+
+- **After modifications (eliminating ambiguity and left recursion):**  
+There were **no ambiguities** or **left recursion** detected in the original grammar.  
+Therefore, the grammar remains classified as **Context-Free (Type 2)** after analysis.
+
+**Reference:**  
+In a Context-Free Grammar (CFG), each production rule must have a single non-terminal on the left-hand side, and the right-hand side can be any combination of terminals and non-terminals. This fits exactly the structure of our grammar. 【Source: [Wikipedia - Context-Free Grammar](https://en.wikipedia.org/wiki/Context-free_grammar)】
+
+---
+
+### Time Complexity Implications
+
+Parsing context-free grammars (CFGs) using algorithms like **Chart Parsing** (as implemented with NLTK) has a **time complexity** of approximately **O(n³)** in the worst case, where **n** is the number of words (tokens) in the input sentence.
 
 
 ## Resources 
 
-Bird, Steven, Edward Loper and Ewan Klein (2009), Natural Language Processing with Python. O’Reilly Media Inc.
+- Bird, Steven, Edward Loper and Ewan Klein (2009), Natural Language Processing with Python. O’Reilly Media Inc.
 
-NLTK :: Sample usage for grammar. (n.d.). https://www.nltk.org/howto/grammar.html
+- NLTK :: Sample usage for grammar. (n.d.). https://www.nltk.org/howto/grammar.html
 
-8.Errors and exceptions. (n.d.). Python Documentation. https://docs.python.org/3/tutorial/errors.html#handling-exceptions
+- 8.Errors and exceptions. (n.d.). Python Documentation. https://docs.python.org/3/tutorial/errors.html#handling-exceptions
 
-8.Analyzing sentence structure. (n.d.). https://www.nltk.org/book/ch08.html
+- 8.Analyzing sentence structure. (n.d.). https://www.nltk.org/book/ch08.html
