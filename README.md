@@ -92,11 +92,57 @@ When you run the program it will automatically test all the predefined sentences
 
 ## Tests
 To validate the grammar I implemented a set of tests that you can find on the *grammar.py* file in this repository. This set of tests includes both correctly structured sentences that return "Accepted" and incorrectly structured sentences that return "Rejected".  
+
 **Correct Sentences:**
 Eu come o pão, ela bebe a água, nós ama o futebol, vocês vê o filme, eles come o filme.
 
 **Incorrect Sentences:**
 bebe tu os futebol, água bebe a tu, eu filme vê as, es pão come a, elle ama futebol.
+
+### LL1 Parsing Example
+Here are some parse trees for some of the valid sentences, showing the output of the program:
+
+Eu come o pão
+```
+          S
+         / \
+       NP   VP
+       |    / \
+      Eu   V   NP
+           |   / \
+         come D  N
+              |   |
+              o  pão
+
+```
+
+Ela bebe a água
+```
+          S
+         / \
+       NP   VP
+       |    / \
+     Ela   V   NP
+           |   / \
+         bebe D  N
+              |   |
+              a  água
+
+```
+Nós ama o futebol
+```
+          S
+         / \
+       NP   VP
+       |    / \
+     Nós   V   NP
+           |   / \
+          ama D  N
+              |   |
+              o  futebol
+```
+
+
 
 This grammar **only** validates the syntactic structure of sentences according to the context-free rules.
 
