@@ -16,11 +16,11 @@ from nltk import CFG
 portuguese = CFG.fromstring("""
 S -> NP VP  
 NP -> P  
-VP -> V AP  
-AP -> A N  
+VP -> V DetP  
+DetP -> Det N  
 P -> 'eu' | 'tu' | 'ele' | 'ela' | 'nós' | 'vocês' | 'eles'  
 V -> 'come' | 'bebe' | 'ama' | 'vê'  
-A -> 'o' | 'a' | 'os' | 'as'  
+Det -> 'o' | 'a' | 'os' | 'as'  
 N -> 'pão' | 'água' | 'futebol' | 'filme'           
 """)
 
