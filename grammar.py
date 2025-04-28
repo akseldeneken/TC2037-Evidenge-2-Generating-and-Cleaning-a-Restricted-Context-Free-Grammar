@@ -54,8 +54,8 @@ def main():
             "bebe tu os futebol", # Incorrect
             "água bebe a tu",  # Incorrect
             "eu filme vê as",  # Incorrect
-            "es pão come a", # Incorrect
-            "elle ama futebol"   # Incorrect
+            "as pão come a", # Incorrect
+            "ele ama futebol"   # Incorrect
         ]
 
     # Itirate over each predefined sentence and test it with the grammar "test_sentence(sent)"
