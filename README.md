@@ -28,4 +28,25 @@ Where:
 This structure is to keep the model context free and suitable for LL(1) parsing after eliminating ambiguity and left recursion.
 
 The syntatic tree of the sentence "eu come o pào" is the following:
+(S (NP (P eu)) (VP (V come) (AP (A o) (N pão))))
 ![Diagrama en blanco (1)](https://github.com/user-attachments/assets/2dc9787a-f2de-4bd8-90be-01cd11efada4)
+
+## Ambiguity and Left Recursion Analysis
+
+The grammar was analyzed to check for ambiguity and left recursion:
+
+- **Ambiguity:** The grammar is not ambiguous. Each sentence can only be derived in one unique way, generating a single valid parse tree. There is no possibility of multiple parse trees for the same sentence.
+
+- **Left Recursion:** The grammar does not contain left recursion. All productions start with terminal symbols or non-terminals that eventually lead directly to terminal symbols without recursion on the left-hand side.
+
+Therefore, the grammar is suitable for LL(1) parsing.
+
+## Resources 
+
+Bird, Steven, Edward Loper and Ewan Klein (2009), Natural Language Processing with Python. O’Reilly Media Inc.
+
+NLTK :: Sample usage for grammar. (n.d.). https://www.nltk.org/howto/grammar.html
+
+8. Errors and exceptions. (n.d.). Python Documentation. https://docs.python.org/3/tutorial/errors.html#handling-exceptions
+
+8. Analyzing sentence structure. (n.d.). https://www.nltk.org/book/ch08.html
