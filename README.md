@@ -47,7 +47,7 @@ pip install ntlk
 ```
 Once installed you can run the program as usual.
 
-The grammar was defined using the "CFG.fromstring()" function from the ntlk library which allows us to parse grammars from strings.
+The grammar was defined using the "CFG.fromstring()" function from the nltk library which allows us to parse grammars from strings.
 ```
 portuguese = CFG.fromstring("""
 S -> NP VP  
@@ -64,7 +64,7 @@ I also used the "ChartParser" function with the defined grammar which efficientl
 ```
 parser = nltk.ChartParser(portuguese)
 ```
-Then I defined a "test-sentence(sentence) function that tokinizes the input sentence, parses it using the grammar, and returns wether the sentence was accepted or not.
+Then I defined a "test-sentence(sentence) function that tokinizes the input sentence, parses it using the grammar, and returns whether the sentence was accepted or not.
 ```
 def test_sentence(sentence):
     sent = sentence.split()
@@ -90,7 +90,7 @@ eu filme vê as: Rejected
 When you run the program it will automatically test all the predefined sentences, print the corresponding syntactic tree and print whether the sentence was Accepted or Rejected.
 
 ## Tests
-To validate the grammar I implemented a set of tests that you can find on the .py file in this repository. This set of tests includes both correctly structured sentences that return "Accepted" and incorrectly structured sentences that return "Rejected".  
+To validate the grammar I implemented a set of tests that you can find on the *grammar.py* file in this repository. This set of tests includes both correctly structured sentences that return "Accepted" and incorrectly structured sentences that return "Rejected".  
 Examples:  
 "ela bebe a água" was accepted since it has a correct structure.  
 "água bebe a tu" was rejected since it has an incorrect structure.  
