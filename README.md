@@ -63,7 +63,7 @@ Fortunately, in the original design of the grammar, this does not happen.
 ## Implementation
 The grammar was implemented using the natural language toolkit (nltk) library. If you don't have it installed, you can install it using the following command:
 ```
-pip install ntlk
+pip install nltk
 ```
 Once installed you can run the program as usual.
 
