@@ -181,6 +181,28 @@ Because there were **no ambiguities** or **left recursion** detected in the orig
 
 Parsing context-free grammars using Chart Parsing has a time complexity of **O(n³)** in the worst case, where n is the number of words in the sentence.
 
+### Time Implications and Examples of Chomsky Hierarchy Levels
+
+**Regular Grammars (Type 3):**  
+- Parsing/recognition is very efficient, typically O(n) (linear) time complexity, where n is the length of the input string.
+- Example of application: Simple patterns, such as identifiers or sequences matching regular expressions.
+- String Example: "abab", "abc123"
+
+**Context-Free Grammars (Type 2):**  
+- Parsing is generally more complex than regular languages, with a typical time complexity of O(n³) (polynomial) using general parsing algorithms like CYK or Chart Parsing.
+- Example of application: Programming languages syntax (balanced parentheses, nested structures).
+- String Example: "eu come o pão"
+  
+**Context-Sensitive Grammars (Type 1):**  
+- Parsing is more complex and usually NP-complete; recognizing context-sensitive languages can take exponential time in the worst case.
+- Example of application: Parts of natural languages where agreement between words must be enforced (subject-verb agreement).
+- String Example: "Nós comemos o pão" (requiring subject-verb agreement)
+
+**Recursively Enumerable Grammars (Type 0):**  
+- Parsing is undecidable; there is no general algorithm that always finishes. Computations may never terminate.
+- Example of application: General mathematical theories, Turing machine languages.
+- String Example: Languages that can only be recognized by a Turing machine, could not find any example that I understood.
+
 
 ## Resources 
 
