@@ -90,8 +90,8 @@ eu filme vê as: Rejected
 When you run the program it will automatically test all the predefined sentences, print the corresponding syntactic tree and print whether the sentence was Accepted or Rejected.
 
 ## Tests
-To validate the grammar I implemented a set of tests that you can find on the .py file in this repository. This set of tests includes both correctly structured sentences that return "Accepted" and incorrectly structures entences that return "Rejected".  
-Example:  
+To validate the grammar I implemented a set of tests that you can find on the .py file in this repository. This set of tests includes both correctly structured sentences that return "Accepted" and incorrectly structured sentences that return "Rejected".  
+Examples:  
 "ela bebe a água" was accepted since it has a correct structure.  
 "água bebe a tu" was rejected since it has an incorrect structure.  
 
@@ -100,8 +100,8 @@ This grammar **only** validates the syntactic structure of sentences according t
 ## Analysis
 
 ### Chomsky Hierarchy Classification
-According to Chomsky's hierarchy, the grammar is **Context-Free (Type 2)**.  
-In a context-free grammar, a single non-terminal can be replaced by a group of terminals and/or non-terminals. The left part of the rule always has only one non-terminal, and the right part shows what that non-terminal can become.
+According to Chomsky's hierarchy, the grammar is a **Context-Free (Type 2)**.  
+In a context-free grammar, a single non-terminal can be replaced by a group of terminals and/or non-terminals. The left part of the rule always has only one non-terminal, and the right part shows what non-terminal can become.
 
 Because there were **no ambiguities** or **left recursion** detected in the original grammar, the grammar remains classified as **Context-Free (Type 2)** after the analysis.
 
