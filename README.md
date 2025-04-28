@@ -88,14 +88,18 @@ Then I defined a "test-sentence(sentence) function that tokinizes the input sent
 ```
 def test_sentence(sentence):
     sent = sentence.split()
+
+    # Create a Chart Parser for better handling of the grammar
     parser = nltk.ChartParser(portuguese)
-    for tree in parser.parse(sent):
-        print(tree)
-        trees = list(parser.parse(sent))
-        if len(trees) > 0:
-            return True
-        else:
-            return False
+
+    # Print the syntax tree of each accepted sentence
+    trees = list(parser.parse(sent))
+    if trees:
+        for tree in trees:
+            print(tree)
+        return True
+    else:
+        return False
 ```
 In case the sentence is accepted, the corresponding syntactic tree is printed next to it to visualize the structure according to the defined grammar.  
 Output of an accepted sentence:
