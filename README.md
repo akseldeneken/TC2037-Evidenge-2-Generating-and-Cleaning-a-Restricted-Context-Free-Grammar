@@ -40,45 +40,6 @@ Regarding left recursion, the grammar does not contain it. All productions start
 
 Therefore, the grammar is suitable for LL(1) parsing.
 
-### Potential Ambiguity (Hypothetical)
-
-Although the restricted Portuguese grammar implemented in this project is unambiguous, it is important to acknowledge how ambiguity could arise if additional production rules were introduced without care.
-
-For instance, imagine if we had allowed noun phrases (NP) to expand recursively or had permitted more flexible adjective placement, like:  
-
-NP → NP NP
-
-
-or allowed adjectives to appear either before or after the noun interchangeably without enforcing structure.
-
-In that case, a sentence like:
-
-> "eu come o pão grande"
-
-could have two different parse trees:
-
-- One interpretation where "o pão" is the noun phrase and "grande" is attached separately.
-- Another interpretation where "pão grande" is treated as a single unit within the noun phrase.
-
-Thus, without strict control over the production rules, the grammar could become ambiguous, allowing multiple parse trees for a single string.
-
-However, in the grammar implemented for this project, noun phrases (NP) are strictly restricted to either a determiner followed by a noun (possibly modified by adjectives in a fixed order), or a pronoun. This rigid structure ensures that only one syntactic tree is generated per valid sentence.
-
-### Elimination of Left Recursion
-
-The original grammar also did not contain left recursion.  
-In all production rules, the first symbol derived is different from the non-terminal being defined, preventing left-recursive loops.
-
-Examples:
-
-- `S → NP VP` starts with a noun phrase (NP).
-- `NP → P` starts with a pronoun (P) or a determiner (DET).
-- `VP → V NP` starts with a verb (V).
-
-There is no case where a non-terminal directly calls itself as the first element, ensuring that the grammar is suitable for LL(1) parsing techniques without modifications.
-
-Therefore, the grammar remains non-ambiguous and left-recursion free, confirming its compatibility with efficient top-down parsing methods.
-
 
 ## Implementation
 The grammar was implemented using the natural language toolkit (nltk) library. If you don't have it installed, you can install it using the following command:
