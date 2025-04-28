@@ -12,24 +12,24 @@ The grammar that recognizes the language is the following:
 
 S → NP VP  
 NP → P  
-VP → V AP  
-AP → A N  
+VP → V DetP  
+DetP → Det N  
 P → eu | tu | ele | ela | nós | vocês | eles  
 V → come | bebe | ama | vê  
-A → o | a | os | as  
+Det → o | a | os | as  
 N → pão | água | futebol | filme  
 
 Where:
 - S: represents the entire sentence.
 - NP (NounPhrase): reresnts the subject and consists of a Pronoun
 - VP (VerbPhrase): represents the action and the object and consists of a Verb followed by an Article Phrase
-- AP (ArticlePhrase): represents the object and consists of an Article and a Noun.
+- DetP (DeterminerPhrase): represents the object and consists of an Determiner and a Noun.
 
 
 This structure is to keep the model context-free and suitable for LL(1) parsing after eliminating ambiguity and left recursion.
 
 The syntactic tree of the sentence "eu come o pào" is the following:
-(S (NP (P eu)) (VP (V come) (AP (A o) (N pão))))
+(S (NP (P eu)) (VP (V come) (DetP (Det o) (N pão))))
 ![Diagrama en blanco (1)](https://github.com/user-attachments/assets/2dc9787a-f2de-4bd8-90be-01cd11efada4)
 
 ## Ambiguity and Left Recursion Analysis
@@ -49,11 +49,11 @@ N → pão | água | futebol | filme | eu | tu
 In this case, the word "eu" ("I" in Portuguese) could be parsed both as a Pronoun (P) and as a Noun (N), leading to two possible parse trees for a sentence like "eu come o pão"
 **Parse 1**
 ```
-(S (NP (P eu)) (VP (V come) (AP (A o) (N pão))))
+(S (NP (P eu)) (VP (V come) (DetP (Det o) (N pão))))
 ```
 **Parse 2** Eu as a NOUN.
 ```
-(S (NP (N eu)) (VP (V come) (AP (A o) (N pão))))
+(S (NP (N eu)) (VP (V come) (DetP (Det o) (N pão))))
 ```
 This ambiguity would make the grammar unsuitable for LL(1) parsing, because the parser would not know whether "eu" should be interpreted as a Pronoun or as a Noun.
 
@@ -72,11 +72,11 @@ The grammar was defined using the "CFG.fromstring()" function from the nltk libr
 portuguese = CFG.fromstring("""
 S -> NP VP  
 NP -> P  
-VP -> V AP  
-AP -> A N  
+VP -> V DetP  
+DetP -> Det N  
 P -> 'eu' | 'tu' | 'ele' | 'ela' | 'nós' | 'vocês' | 'eles'  
 V -> 'come' | 'bebe' | 'ama' | 'vê'  
-A -> 'o' | 'a' | 'os' | 'as'  
+Det -> 'o' | 'a' | 'os' | 'as'  
 N -> 'pão' | 'água' | 'futebol' | 'filme'           
 """)
 ```
@@ -100,7 +100,7 @@ def test_sentence(sentence):
 In case the sentence is accepted, the corresponding syntactic tree is printed next to it to visualize the structure according to the defined grammar.  
 Output of an accepted sentence:
 ```
-(S (NP (P eles)) (VP (V come) (AP (A o) (N filme))))
+(S (NP (P eles)) (VP (V come) (DetP (Det o) (N filme))))
 eles come o filme: Accepted
 ```
 Output of a Rejected sentence:
@@ -127,7 +127,7 @@ Eu come o pão
          / \
        NP   VP
        |    / \
-      Eu   V   NP
+      Eu   V   DetP
            |   / \
          come D  N
               |   |
@@ -141,7 +141,7 @@ Ela bebe a água
          / \
        NP   VP
        |    / \
-     Ela   V   NP
+     Ela   V   DetP
            |   / \
          bebe D  N
               |   |
@@ -154,7 +154,7 @@ Nós ama o futebol
          / \
        NP   VP
        |    / \
-     Nós   V   NP
+     Nós   V   DetP
            |   / \
           ama D  N
               |   |
