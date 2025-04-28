@@ -51,13 +51,13 @@ In this case, the word "eu" ("I" in Portuguese) could be parsed both as a Pronou
 ```
 (S (NP (P eu)) (VP (V come) (AP (A o) (N pão))))
 ```
-**Parse 2**
+**Parse 2** Eu as a NOUN.
 ```
 (S (NP (N eu)) (VP (V come) (AP (A o) (N pão))))
 ```
 This ambiguity would make the grammar unsuitable for LL(1) parsing, because the parser would not know whether "eu" should be interpreted as a Pronoun or as a Noun.
 
-Fortunately, in the original design of the grammar, such overlapping definitions are avoided, ensuring that every token belongs unambiguously to one syntactic category.
+Fortunately, in the original design of the grammar, this does not happen.
 
 
 ## Implementation
