@@ -46,6 +46,49 @@ The grammar was implemented using the natural language tooljit (ntlk) library. I
 ```
 pip install ntlk
 ```
+Once installed you can run the program as usual.
+
+The grammar was defined using the "CFG.fromstring()" function from the ntlk library which allows us to parse grammars from strings.
+```
+portuguese = CFG.fromstring("""
+S -> NP VP  
+NP -> P  
+VP -> V AP  
+AP -> A N  
+P -> 'eu' | 'tu' | 'ele' | 'ela' | 'nós' | 'vocês' | 'eles'  
+V -> 'come' | 'bebe' | 'ama' | 'vê'  
+A -> 'o' | 'a' | 'os' | 'as'  
+N -> 'pão' | 'água' | 'futebol' | 'filme'           
+""")
+```
+I also used the "ChartParser" function with the defined grammar which efficiently parse context free grammars by building parse trees dinamically.
+```
+parser = nltk.ChartParser(portuguese)
+```
+Then I defined a "test-sentence(sentence) function that tokinizes the input sentence, parses it using the grammar, and returns wether the sentence was accepted or not.
+```
+def test_sentence(sentence):
+    sent = sentence.split()
+    parser = nltk.ChartParser(portuguese)
+    for tree in parser.parse(sent):
+        print(tree)
+        trees = list(parser.parse(sent))
+        if len(trees) > 0:
+            return True
+        else:
+            return False
+```
+In case the sentence is accepted, the corresponding syntactic tree is printed next to it to visualize the structure according to the defined grammar.
+Output of an accepted sentence:
+```
+(S (NP (P eles)) (VP (V come) (AP (A o) (N filme))))
+eles come o filme: Accepted
+```
+Output of a Rejected sentence:
+```
+eu filme vê as: Rejected
+```
+
 
 ## Resources 
 
@@ -53,6 +96,6 @@ Bird, Steven, Edward Loper and Ewan Klein (2009), Natural Language Processing wi
 
 NLTK :: Sample usage for grammar. (n.d.). https://www.nltk.org/howto/grammar.html
 
-8. Errors and exceptions. (n.d.). Python Documentation. https://docs.python.org/3/tutorial/errors.html#handling-exceptions
+8.Errors and exceptions. (n.d.). Python Documentation. https://docs.python.org/3/tutorial/errors.html#handling-exceptions
 
-8. Analyzing sentence structure. (n.d.). https://www.nltk.org/book/ch08.html
+8.Analyzing sentence structure. (n.d.). https://www.nltk.org/book/ch08.html
