@@ -34,7 +34,7 @@ The syntactic tree of the sentence "eu come o pào" is the following:
 
 ## Ambiguity and Left Recursion Analysis
 
-This grammar is not ambiguous since each sentence can only be derived in **one** unique way, and each word generates a **single** valid parse tree. There is no possibility of multiple parse trees for the same sentence.
+This grammar is not ambiguous since each sentence can only be derived in **one** unique way, and each word generates a **single** valid parse tree. There is no possibility of multiple parse trees for the same sentence since they all follow the simple structure subject-verb-object.
 
 Regarding left recursion, the grammar does not contain it. All productions start with terminal symbols or non-terminals that eventually lead directly to terminal symbols without recursion.
 
