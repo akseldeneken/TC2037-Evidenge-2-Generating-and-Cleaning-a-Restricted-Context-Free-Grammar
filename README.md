@@ -25,6 +25,16 @@ Where:
 - VP (VerbPhrase): represents the action and the object and consists of a Verb followed by an Article Phrase
 - DetP (DeterminerPhrase): represents the object and consists of an Determiner and a Noun.
 
+  Here are examples of valid sentences this grammar can generate:
+
+- eu come o pão
+- ela bebe a água
+- nós ama o futebol
+- vocês vê o filme
+- eles come o filme
+
+All sentences must follow this order. If the structure is altered or if a word is out of place, the sentence will be rejected
+
 
 This structure is to keep the model context-free and suitable for LL(1) parsing after eliminating ambiguity and left recursion.
 
@@ -168,6 +178,10 @@ Nós ama o futebol
 
 
 This grammar **only** validates the syntactic structure of sentences according to the context-free rules.
+
+I implemented a `run_tests()` function that automatically checks multiple valid and invalid sentences. The output shows whether each sentence was accepted or rejected, and if the result matches the expected outcome.
+
+This confirms that the grammar works as intended and follows the designed rules strictly.
 
 ## Analysis
 
