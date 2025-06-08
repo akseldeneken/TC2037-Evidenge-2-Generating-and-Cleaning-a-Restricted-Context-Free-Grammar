@@ -41,27 +41,33 @@ def test_sentence(sentence):
         return False
 
 
-def main():
-    # Sentences to test the grammar 
-    sentences = [
-            "eu come o pão",
-            "ela bebe a água",
-            "nós ama o futebol",
-            "vocês vê o filme",
-            "eles come o filme",
-            "bebe tu os futebol", # Incorrect
-            "água bebe a tu",  # Incorrect
-            "eu filme vê as",  # Incorrect
-            "as pão come a", # Incorrect
-            "ele ama futebol"   # Incorrect
-        ]
+def run_tests():
+    valid_sentences = [
+        "eu come o pão",
+        "ela bebe a água",
+        "nós ama o futebol",
+        "vocês vê o filme",
+        "eles come o filme"
+    ]
 
-    # Itirate over each predefined sentence and test it with the grammar "test_sentence(sent)"
-    for sent in sentences:
-        result = test_sentence(sent)
-        if result:
-            print(f"{sent}: Accepted\n")
-        else:
-            print(f"{sent}: Rejected\n")
+    invalid_sentences = [
+        "bebe tu os futebol",
+        "água bebe a tu",
+        "eu filme vê as",
+        "as pão come a",
+        "ele ama futebol"
+    ]
 
-main()
+    print("---- Valid Sentences ----")
+    for sentence in valid_sentences:
+        result = test_sentence(sentence)
+        print(f"{sentence} | Expected: True | Result: {result} | Test: {'Passed' if result else 'Failed'}\n")
+
+    print("---- Invalid Sentences ----")
+    for sentence in invalid_sentences:
+        result = test_sentence(sentence)
+        print(f"{sentence} | Expected: False | Result: {result} | Test: {'Passed' if not result else 'Failed'}\n")
+
+if __name__ == "__main__":
+    run_tests()
+
