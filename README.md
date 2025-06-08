@@ -1,4 +1,4 @@
-# TC2037-Evidenge-2-Generating-and-Cleaning-a-Restricted-Context-Free-Grammar
+# TC2037-Evidence-2-Generating-and-Cleaning-a-Restricted-Context-Free-Grammar
 ## Description
 The language I chose to model consists of simple sentences in Portuguese that follow the next structure:
 
