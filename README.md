@@ -67,6 +67,20 @@ In this case, the word "eu" ("I" in Portuguese) could be parsed both as a Pronou
 ```
 This ambiguity would make the grammar unsuitable for LL(1) parsing, because the parser would not know whether "eu" should be interpreted as a Pronoun or as a Noun.
 
+To remove this ambiguity, we would take these steps:
+
+Review the overlapping rules and identify which terminal symbols appear on the right-hand side of more than one non-terminal (in this case: "eu" appears in both P and N).
+
+Restructure the grammar to make sure every terminal symbol maps unambiguously to a single category.
+
+For example, we remove "eu" and "tu" from the N rule:
+```
+N -> pão | água | futebol | filme
+```
+This guarantees that words like “eu” will only be parsed as Pronouns, not Nouns.
+
+As a result, the sentence “eu come o pão” would generate only one valid parse tree, making the grammar suitable again for LL(1) parsing.
+
 Fortunately, in the original design of the grammar, this does not happen.
 
 
